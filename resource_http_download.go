@@ -11,12 +11,12 @@ import (
         "fmt"
 )
 
-func httpDownload() *schema.Resource {
+func httpdownload() *schema.Resource {
         return &schema.Resource{
-                Create: resourceHttpDownloadCreate,
-                Read:   resourceHttpDownloadRead,
-                Update: resourceHttpDownloadUpdate,
-                Delete: resourceHttpDownloadDelete,
+                Create: resourcehttpdownloadCreate,
+                Read:   resourcehttpdownloadRead,
+                Update: resourcehttpdownloadUpdate,
+                Delete: resourcehttpdownloadDelete,
 
                 Schema: map[string]*schema.Schema{
                         "remote_url": &schema.Schema{
@@ -40,7 +40,7 @@ func httpDownload() *schema.Resource {
 }
 
 
-func resourceHttpDownloadCreate(d *schema.ResourceData, m interface{}) error {
+func resourcehttpdownloadCreate(d *schema.ResourceData, m interface{}) error {
         remote_url := d.Get("remote_url").(string)
         filename := d.Get("filename").(string)
 
@@ -68,10 +68,10 @@ func resourceHttpDownloadCreate(d *schema.ResourceData, m interface{}) error {
         d.SetId(filename)
 
         // Important: Tell Terraform to perform the read-validation
-        return resourceHttpDownloadRead(d, m)
+        return resourcehttpdownloadRead(d, m)
 }
 
-func resourceHttpDownloadRead(d *schema.ResourceData, m interface{}) error {
+func resourcehttpdownloadRead(d *schema.ResourceData, m interface{}) error {
         filename := d.Get("filename").(string)
         checksum := d.Get("checksum").(string)
         checksumType := d.Get("checksum_type").(string)
@@ -105,12 +105,12 @@ func resourceHttpDownloadRead(d *schema.ResourceData, m interface{}) error {
 
 
 
-func resourceHttpDownloadUpdate(d *schema.ResourceData, m interface{}) error {
-        return resourceHttpDownloadCreate(d, m)
+func resourcehttpdownloadUpdate(d *schema.ResourceData, m interface{}) error {
+        return resourcehttpdownloadCreate(d, m)
         return nil
 }
 
-func resourceHttpDownloadDelete(d *schema.ResourceData, m interface{}) error {
+func resourcehttpdownloadDelete(d *schema.ResourceData, m interface{}) error {
         filename := d.Get("filename").(string)
 
         err := os.Remove(filename)
