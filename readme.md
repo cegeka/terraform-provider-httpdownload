@@ -7,7 +7,7 @@ During a recent project I had the use case to execute a local binary during a Te
 ## Build from source
 ```
 go build -o terraform-provider-http-download
-cp terraform-provider-http-download ${your_terraform_code_dir}/terraform.d/plugins/darwin_amd64/
+cp terraform-provider-http-download ${your_terraform_code_dir}/terraform.d/plugins/darwin_amd64/ # this is for osx.
 ```
 
 ## Example
