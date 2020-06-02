@@ -7,7 +7,7 @@ import (
 func Provider() *schema.Provider {
         return &schema.Provider{
                 ResourcesMap: map[string]*schema.Resource{
-                	"http-download": httpDownload(),
+					"http_download": httpDownload(),
                 },
         }
 }
